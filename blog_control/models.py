@@ -19,7 +19,7 @@ class ArticleTag(models.Model):
         return self.tag
 
 class ArticleModel(models.Model):
-    user = models.ForeignKey(User,related_name='article',on_delete=models.CASCADE)
+    author = models.ForeignKey(User,related_name='article',on_delete=models.CASCADE)
     tag = models.ManyToManyField(ArticleTag,related_name='article_tag',blank=True)
     column = models.ForeignKey(ArticleColumn,related_name='article_column',blank=True,on_delete=models.CASCADE)
     like = models.ManyToManyField(User,related_name='like_users',blank=True)

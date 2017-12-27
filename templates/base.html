@@ -1,11 +1,23 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    {% block own_css %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    {% block css %}{% endblock %}
 </head>
 <body>
-{% include  %}
+<header>
+{% include 'head.html' %}
+</header>
+{% block content %}{% endblock %}
+<footer>
+    {% include 'foot.html' %}
+</footer>
+<script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+{% block script %}{% endblock %}
 </body>
 </html>
