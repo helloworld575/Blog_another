@@ -7,7 +7,81 @@
 {% block content %}
     <div class="container">
         <div>
-            <form action="." class="" id="signup"
+            <form action="." class="col-md-5 col-md-offset-3" id="signup">{% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="signup_username">用户名：</label>
+                    <input class="form-control input" id="signup_username" name="username">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="signup_password1">密码：</label>
+                    <input class="form-control input" id="signup_password1" name="password1">
+                    <div class="password-judge">
+                        <div class="pwd-bar"></div>
+                        <div class="pwd-bar-on"></div>
+                        <div class="pwd-msg">
+                            <span>弱</span>
+                            <span>中</span>
+                            <span>强</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="signup_password2">重复密码</label>
+                    <input class="form-control input" id="signup_password2" name="password2">
+                    <div class="passowrd-msg"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="signup_email">邮箱：</label>
+                    <input class="form-control input" id="signup_email" name="email">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-lg" value="提交">
+                </div>
+            </form>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(function () {
+            var $pwd1=$("#signup_password1");
+            $pwd1.keyup(function () {
+                password1_judge($pwd1.val())
+            });
+        });
+        function password1_judge(password1) {
+            var $pwd_bar_on=$(".password-judge");
+            var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+            var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+            var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+            if(enoughRegex.test(password1)===false){
+                $pwd_bar_on.removeClass('pwd-mid');
+                $pwd_bar_on.removeClass('pwd-weak');
+                $pwd_bar_on.removeClass('pwd-max');
+                $pwd_bar_on.addClass('pwd-fob');
+            }
+            else if(strongRegex.test(password1)){
+                $pwd_bar_on.removeClass('pwd-mid');
+                $pwd_bar_on.removeClass('pwd-weak');
+                $pwd_bar_on.removeClass('pwd-fob');
+                $pwd_bar_on.addClass('pwd-max');
+            }
+            else if(mediumRegex.test(password1)){
+                $pwd_bar_on.removeClass('pwd-fob');
+                $pwd_bar_on.removeClass('pwd-weak');
+                $pwd_bar_on.removeClass('pwd-max');
+                $pwd_bar_on.addClass('pwd-mid');
+            }
+            else{
+                $pwd_bar_on.removeClass('pwd-mid');
+                $pwd_bar_on.removeClass('pwd-fob');
+                $pwd_bar_on.removeClass('pwd-max');
+                $pwd_bar_on.addClass('pwd-weak');
+            }
+        }
+        function password_same(password1,password2) {
+            
+        }
+    </script>
 {% endblock %}

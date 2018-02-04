@@ -7,11 +7,11 @@
         <div class="col-md-5 col-md-offset-4" id="login">
             <form action=".">{% csrf_token %}
                 <div class="form-group" id="username">
-                    <label class="control-label" for="input_username">用户名</label>
+                    <label class="control-label" for="login_username">用户名</label>
                     <input required class="form-control input" id="login_username" name="username"/>
                 </div>
                 <div class="form-group" id="password">
-                    <label class="control-label" for="input_password">密码：</label>
+                    <label class="control-label" for="login_password">密码：</label>
                     <input required class="form-control input" id="login_password" name="password"/>
                 </div>
                 <div id="login_submit">
