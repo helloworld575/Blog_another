@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,27 +10,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#"><img src="{% static 'img/brand.png' %}" height="30px"/></a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="main_nav"><a href="#">博客 </a></li>
                 <li class="main_nav"><a href="#">我的博客</a></li>
                 <li class="main_nav"><a href="#">图片收藏</a></li>
-                {#        <li class="dropdown">#}
-                {#          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>#}
-                {#          <ul class="dropdown-menu">#}
-                {#            <li><a href="#">Action</a></li>#}
-                {#            <li><a href="#">Another action</a></li>#}
-                {#            <li><a href="#">Something else here</a></li>#}
-                {#            <li role="separator" class="divider"></li>#}
-                {#            <li><a href="#">Separated link</a></li>#}
-                {#            <li role="separator" class="divider"></li>#}
-                {#            <li><a href="#">One more separated link</a></li>#}
-                {#          </ul>#}
-                {#        </li>#}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -58,7 +46,7 @@
                     </ul>
                 </li>
                 {% else %}
-                    <li><p class="navbar-text">您还未登录，请<a href="#">登录/注册</a></pnavbar-text></li>
+                    <li><p class="navbar-text">您还未登录，请<a href="{% url 'login' %}">登录</a>/<a href="{% url 'signup' %}">注册</a></p></li>
                 {% endif %}
             </ul>
         </div>

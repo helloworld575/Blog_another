@@ -1,0 +1,25 @@
+nav{
+    padding-left:10%;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 20px;
+}
+.main_nav{
+    margin-left: 10px;
+}
+#login_submit{
+    margin: 0 auto;
+    display: table;
+}
+#login{
+    margin-top: 50px;
+}
+#footer{
+    position: fixed;
+    bottom:30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
